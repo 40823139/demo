@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imaginarium - 想像，即成真</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* 使用 Noto Sans TC 作為主要字體 */
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #000;
+            color: #F5F5F7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* 標題漸變文字效果 */
+        .gradient-text {
+            background: linear-gradient(90deg, #EAEAEA, #A0A0A0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        /* 滾動淡入動畫 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* 導覽列背景模糊效果 */
+        .nav-blur {
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+        
+        /* 特殊區塊背景 */
+        .section-bg-gray {
+            background-color: #111;
+        }
+    </style>
+</head>
+<body class="bg-black">
+
+    <!-- Header / Navigation Bar -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-xl font-bold text-white">Imaginarium</a>
+                <div class="hidden md:flex items-center space-x-8 text-sm text-gray-300">
+                    <a href="#" class="hover:text-white transition-colors">設計</a>
+                    <a href="#" class="hover:text-white transition-colors">功能</a>
+                    <a href="#" class="hover:text-white transition-colors">AI</a>
+                    <a href="#" class="hover:text-white transition-colors">社群</a>
+                    <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-500 transition-colors">立即體驗</a>
+                </div>
+                <div class="md:hidden">
+                    <!-- Mobile Menu Button -->
+                    <button class="text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="h-screen flex flex-col items-center justify-center text-center pt-20 relative overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1620912189837-e5721a73ac52?q=80&w=2940&auto=format&fit=crop" 
+                     alt="抽象的3D藝術背景" 
+                     class="w-full h-full object-cover opacity-30">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+            </div>
+            <div class="z-10 px-4">
+                <h1 class="text-5xl md:text-8xl font-black tracking-tighter reveal">Imaginarium</h1>
+                <h2 class="text-3xl md:text-6xl font-bold tracking-tight mt-4 gradient-text reveal" style="transition-delay: 100ms;">想像，即成真。</h2>
+                <p class="max-w-2xl mx-auto mt-8 text-lg md:text-xl text-gray-300 reveal" style="transition-delay: 200ms;">
+                    首款由 AI 驅動的 3D 設計平台，<br class="hidden md:block">
+                    將你的文字、草圖，甚至靈感，化為令人屏息的 3D 世界。<br>
+                    這不是設計的進化，而是設計的革命。
+                </p>
+                <div class="mt-10 space-x-4 reveal" style="transition-delay: 300ms;">
+                    <a href="#" class="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors">了解更多 &gt;</a>
+                    <a href="#" class="text-blue-500 font-semibold hover:text-blue-400 transition-colors">觀看影片</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 1: Core AI Engine -->
+        <section class="py-20 md:py-32 section-bg-gray">
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl md:text-6xl font-bold tracking-tight reveal">從零到一，<br>只需一句話。</h2>
+                    <p class="mt-8 text-lg md:text-xl text-gray-400 reveal">
+                        我們開創性的 <strong>Nova-Mind AI</strong>，能深刻理解你的語言。無論是天馬行空的幻想，還是精確的工業設計草案，它都能瞬間為你構築出色的 3D 模型。省去繁瑣的建模步驟，讓你專注於最重要的事：<strong>創意</strong>。
+                    </p>
+                </div>
+                <div class="mt-16 reveal">
+                    <img src="https://images.unsplash.com/photo-1526666923127-b2970f64b422?q=80&w=2940&auto=format&fit=crop" 
+                         alt="AI生成模型的示意圖"
+                         class="rounded-3xl shadow-2xl mx-auto max-w-5xl w-full"
+                         onerror="this.onerror=null;this.src='https://placehold.co/1200x675/111111/FFFFFF?text=AI+生成示意圖';">
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 2: Intuitive Editing -->
+        <section class="py-20 md:py-32 bg-black">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+                <div class="text-left reveal">
+                    <h2 class="text-4xl md:text-6xl font-bold tracking-tight">指尖所及，<br>盡是得心應手。</h2>
+                    <p class="mt-8 text-lg md:text-xl text-gray-400">
+                        我們重新設計了 3D 互動的每一個細節。Imaginarium 的 <strong>Liquid Sculpt</strong> 工具組，讓編輯 3D 模型就像在現實中雕塑黏土一樣直覺。拉伸、塑形、上色，一切操作都如行雲流水，搭配我們領先業界的即時渲染引擎，所見即所得。
+                    </p>
+                </div>
+                <div class="reveal">
+                    <img src="https://images.unsplash.com/photo-1618072186488-09d4351ab3f5?q=80&w=2787&auto=format&fit=crop" 
+                         alt="直覺的編輯工具示意圖"
+                         class="rounded-3xl shadow-2xl"
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x800/000000/FFFFFF?text=直覺編輯示意圖';">
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature 3: AI Material Library -->
+        <section class="py-20 md:py-32 section-bg-gray">
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl md:text-6xl font-bold tracking-tight reveal">為你的創作，<br>注入靈魂。</h2>
+                    <p class="mt-8 text-lg md:text-xl text-gray-400 reveal">
+                        忘掉複雜的節點編輯器。我們強大的 AI 不僅能創造模型，更能生成無限的 <strong>智慧材質 (Smart Materials)</strong>。需要一片帶有清晨露珠的葉子？或是一塊具有未來科技感的碳纖維？只需描述，AI 便會為你生成擁有逼真物理屬性的完美材質。
+                    </p>
+                </div>
+                <div class="mt-16 reveal">
+                    <img src="https://images.unsplash.com/photo-1508846325994-486aaff421a1?q=80&w=2834&auto=format&fit=crop" 
+                         alt="AI智慧材質庫示意圖"
+                         class="rounded-3xl shadow-2xl mx-auto max-w-5xl w-full"
+                         onerror="this.onerror=null;this.src='https://placehold.co/1200x675/111111/FFFFFF?text=智慧材質示意圖';">
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="py-20 md:py-32 bg-black">
+            <div class="container mx-auto px-6">
+                <h2 class="text-center text-3xl md:text-5xl font-bold tracking-tight reveal">由 Imaginarium 創造，由你想像。</h2>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Gallery Item 1 -->
+                    <div class="reveal">
+                        <div class="bg-gray-900 rounded-2xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1670100319188-7106e3381e47?q=80&w=2864&auto=format&fit=crop" alt="懸浮的巴洛克式圖書館" class="w-full h-64 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1D1D1F/FFFFFF?text=作品+1';">
+                            <div class="p-4">
+                                <p class="text-sm text-gray-400">提示: A floating Baroque library with books gently flying around.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 2 -->
+                    <div class="reveal" style="transition-delay: 100ms;">
+                        <div class="bg-gray-900 rounded-2xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1525487748894-998393a6oudc?q=80&w=2787&auto=format&fit=crop" alt="奇幻森林場景" class="w-full h-64 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1D1D1F/FFFFFF?text=作品+2';">
+                            <div class="p-4">
+                                <p class="text-sm text-gray-400">提示: A fantasy forest scene made of glowing mushrooms and crystals.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 3 -->
+                    <div class="reveal" style="transition-delay: 200ms;">
+                        <div class="bg-gray-900 rounded-2xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1542282088-fe84a45a4954?q=80&w=2940&auto=format&fit=crop" alt="未來感跑車" class="w-full h-64 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1D1D1F/FFFFFF?text=作品+3';">
+                            <div class="p-4">
+                                <p class="text-sm text-gray-400">提示: An ultra-futuristic sports car on a rainy cyberpunk city street.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 4 -->
+                    <div class="reveal" style="transition-delay: 300ms;">
+                        <div class="bg-gray-900 rounded-2xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1593998066526-65fcab3021f2?q=80&w=2865&auto=format&fit=crop" alt="可愛的毛茸茸小怪獸" class="w-full h-64 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1D1D1F/FFFFFF?text=作品+4';">
+                            <div class="p-4">
+                                <p class="text-sm text-gray-400">提示: A cute, fluffy little monster drinking a steaming cup of coffee.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Collaboration Section -->
+        <section class="py-20 md:py-32 section-bg-gray">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+                 <div class="reveal">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2832&auto=format&fit=crop" 
+                         alt="團隊協作示意圖"
+                         class="rounded-3xl shadow-2xl"
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x800/111111/FFFFFF?text=團隊協作示意圖';">
+                </div>
+                <div class="text-left reveal">
+                    <h2 class="text-4xl md:text-6xl font-bold tracking-tight">一個人的工作室，<br>一個團隊的宇宙。</h2>
+                    <p class="mt-8 text-lg md:text-xl text-gray-400">
+                        Imaginarium 天生為協作而生。透過 <strong>Cloud Sync</strong>，你可以無縫邀請團隊成員或客戶進入你的專案，一同發想、即時修改。所有變更都會在雲端同步，無論你使用 Mac、iPad 還是 Vision Pro，都能隨時隨地，投入創作。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <footer class="py-20 md:py-40 text-center bg-black">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl md:text-8xl font-black tracking-tighter reveal">Imaginarium</h2>
+                <p class="text-3xl md:text-5xl font-bold tracking-tight mt-4 gradient-text reveal" style="transition-delay: 100ms;">
+                    你的下一個傑作，<br>始於一個想法。
+                </p>
+                <div class="mt-12 reveal" style="transition-delay: 200ms;">
+                    <a href="#" class="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-500 transition-colors">開始創作 &gt;</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // JavaScript for scroll reveal and navbar style change
+
+        // 1. Navbar style change on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-blur');
+            } else {
+                navbar.classList.remove('nav-blur');
+            }
+        });
+
+        // 2. Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: unobserve after revealing to save resources
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+
+</body>
+</html>
