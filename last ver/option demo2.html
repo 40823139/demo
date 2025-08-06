@@ -143,11 +143,6 @@
         
         const N8N_WEBHOOK_URL = 'https://4710f5d60bbb.ngrok-free.app/webhook/b898c39a-312b-4333-bafd-8b9e69d176b1/chat';
 
-        // ******** FIX: Generate a unique session ID for each conversation ********
-        const sessionId = `session_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
-        console.log('本次對話 Session ID:', sessionId);
-
-
         chatForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             const userMessage = messageInput.value.trim();
@@ -161,16 +156,12 @@
             try {
                 const response = await fetch(N8N_WEBHOOK_URL, {
                     method: 'POST',
-                    mode: 'cors', 
+                    mode: 'cors', // Keep CORS mode for proper cross-origin requests
                     headers: { 
                         'Content-Type': 'application/json',
-                        'ngrok-skip-browser-warning': 'true' 
+                        'ngrok-skip-browser-warning': 'true' // Helpful for ngrok
                     },
-                    // ******** FIX: Send both chatInput and sessionId to the webhook ********
-                    body: JSON.stringify({ 
-                        chatInput: userMessage,
-                        sessionId: sessionId 
-                    })
+                    body: JSON.stringify({ chatInput: userMessage })
                 });
 
                 if (!response.ok) {
@@ -181,18 +172,22 @@
                 
                 console.log('從 n8n 收到的原始資料:', data);
 
+                // ******** FIX: Make response parsing more robust to handle different possible output keys from n8n. ********
                 let aiMessage = null;
                 if (data && data.text) {
                     aiMessage = data.text;
                 } else if (data && data.reply) {
                     aiMessage = data.reply;
                 } else if (data && typeof data === 'object' && Object.keys(data).length > 0) {
+                    // Fallback to the first value if it's an object but no known keys are found
                     aiMessage = Object.values(data)[0];
                 }
+
 
                 if (aiMessage) {
                     appendMessage(aiMessage, 'ai');
                 } else {
+                    // If no valid key is found, throw a specific error.
                     throw new Error('收到的回應中找不到 "text" 或 "reply" 欄位。');
                 }
 
@@ -200,6 +195,7 @@
                 console.error('與 n8n 連線時發生錯誤:', error);
                 let errorMessage = `連線失敗，請檢查您的 n8n workflow 是否已啟用並設定好 CORS。錯誤訊息: ${error.message}`;
                 
+                // Provide a more specific error message for the format issue.
                 if (error.message.includes('找不到 "text" 或 "reply"')) {
                     errorMessage = '【回應格式錯誤】\n\n已成功連線至 n8n，但 AI 回應的資料格式不符。\n\n' +
                                    '請打開瀏覽器的「開發者工具」(按 F12)，在「主控台」(Console) 中查看 "從 n8n 收到的原始資料"，確認 AI 回應的確切欄位名稱，並修改 "Respond to Webhook" 節點中的 "Response Body" 設定。';
@@ -218,6 +214,7 @@
             if (isError) {
                  messageBubble.classList.add('error-bubble');
             }
+            // If the text is an object, stringify it for display
             if (typeof text === 'object' && text !== null) {
                 messageBubble.textContent = JSON.stringify(text, null, 2);
             } else {
